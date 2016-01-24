@@ -100,7 +100,7 @@
 		}
 
 		.tabs-nav__link:hover {
-		  color: #6d6d6d;
+		  color: #ffccff;
 		}
 
 		.tabs-nav__link.is-active {
@@ -137,10 +137,15 @@
 		.tab {
 		  display: none;
 		  background-color: #e7e7e7;
+		  height: 457px;
 		}
 
 		.tab.is-active {
 		  display: block;
+		}
+
+		.tab__content {
+		  padding: 1.5rem;
 		}
 
 	</style>
@@ -165,23 +170,23 @@
 		<div id = "tabs" class = "tabs">
 			<div class = "tabs-nav">
 				<a href="#" class="tabs-nav__link is-active">
-		            <i class="fa fa-home"></i>
+		            <i class="nearby-places"></i>
 		            <span> Places to visit </span>
 		          </a>
 		          <a href="#" class="tabs-nav__link">
-		            <i class="fa fa-book"></i>
+		            <i class="hotels"></i>
 		            <span> Hotels </span>
 		          </a>
 		          <a href="#" class="tabs-nav__link">
-		            <i class="fa fa-heart"></i>
+		            <i class="restaurants"></i>
 		            <span> Restaurants </span>
 		          </a>
 		          <a href="#" class="tabs-nav__link">
-		            <i class="fa fa-calendar"></i>
+		            <i class="weather"></i>
 		            <span> Weather </span>
 		          </a>
 		          <a href="#" class="tabs-nav__link">
-		            <i class="fa fa-cog"></i>
+		            <i class="in-news"></i>
 		            <span> In-news </span>
 		          </a>
 			</div>
@@ -193,28 +198,28 @@
 	          </div>
 	        </div>
 
-	        <div class="tab is-active">
+	        <div class="tab">
 	          <div class="tab__content">
 	            <h2> Hotels </h2>
 	            <p> These are some great hotels to stay here !</p>  
 	          </div>
 	        </div>
 
-	        <div class="tab is-active">
+	        <div class="tab">
 	          <div class="tab__content">
 	            <h2> Restaurants </h2>
 	            <p> These are some great restaurants here !</p>  
 	          </div>
 	        </div>
 
-	        <div class="tab is-active">
+	        <div class="tab">
 	          <div class="tab__content">
 	            <h2> Weather </h2>
 	            <p> This is the weather forecast </p>  
 	          </div>
 	        </div>
 
-	        <div class="tab is-active">
+	        <div class="tab">
 	          <div class="tab__content">
 	            <h2> In-News </h2>
 	            <p> These are some important news here !</p>  
@@ -289,9 +294,83 @@
 		    map.fitBounds(bounds);
 		  });
 		  // [END region_getplaces]
+		  //initTabs();
 		}
 
 	</script>
+
+	<script type="text/javascript">
+
+		(function() {
+
+		  'use strict';
+
+		   //@description The Tabs component.
+		   // @param {Object} options The options hash
+		   
+		  var tabs = function(options) {
+
+		    var el = document.querySelector(options.el);
+		    var tabNavigationLinks = el.querySelectorAll(options.tabNavigationLinks);
+		    var tabContentContainers = el.querySelectorAll(options.tabContentContainers);
+		    var activeIndex = 0;
+		    var initCalled = false;
+
+		    
+		      //@description Initializes the component by removing the no-js class from
+		        //the component, and attaching event listeners to each of the nav items.
+		       //Returns nothing.
+		   
+		    var init = function() {
+		      if (!initCalled) {
+		        initCalled = true;
+
+		        for (var i = 0; i < tabNavigationLinks.length; i++) {
+		          var link = tabNavigationLinks[i];
+		          handleClick(link, i);
+		        }
+		      }
+		    };
+
+		     //@description Handles click event listeners on each of the links in the
+		     //  tab navigation. Returns nothing.
+		     //@param {HTMLElement} link The link to listen for events on
+		     //@param {Number} index The index of that link
+		     
+		    var handleClick = function(link, index) {
+		      link.addEventListener('click', function(e) {
+		        e.preventDefault();
+		        goToTab(index);
+		      });
+		    };
+
+		     //description Goes to a specific tab based on index. Returns nothing.
+		     // param {Number} index The index of the tab to go to
+
+		    var goToTab = function(index) {
+		      if (index !== activeIndex && index >= 0 && index <= tabNavigationLinks.length) {
+		        tabNavigationLinks[activeIndex].classList.remove('is-active');
+		        tabNavigationLinks[index].classList.add('is-active');
+		        tabContentContainers[activeIndex].classList.remove('is-active');
+		        tabContentContainers[index].classList.add('is-active');
+		        activeIndex = index;
+		      }
+		    };
+		    
+		     // Returns init and goToTab 
+		    return {
+		      init: init,
+		      goToTab: goToTab
+		    };
+
+		  };
+ 
+		   // Attach to global namespace		   
+		  window.tabs = tabs;
+
+		})();
+
+</script>
 	
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv2yuC05yWmnEBk8o_8g8mZevfcMW09PE&libraries=places&callback=initAutocomplete"
          async defer> </script>
