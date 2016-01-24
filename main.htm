@@ -61,7 +61,7 @@
 			float: left;
 		}
 
-		#info {
+		#tabs {
 			margin-top: 10px;
 			margin-right: 10px;
 			margin-left: 50%;
@@ -76,6 +76,62 @@
 			width:98%;
 			height: 525px;
 			border: 2px solid #333300;
+		}
+
+		.tabs-nav {
+		  display: flex;
+		  list-style: none;
+		  margin: 0;
+		  padding: 0;
+		}
+
+		.tabs-nav__link {
+		  flex: 1;
+		  margin-right: 4px;
+		  padding: 12px;
+		  color: #fff;
+		  background-color: #b3b3b3;
+		  text-align: center;
+		  transition: color 0.3s;
+		}
+
+		.tabs-nav__link:last-child {
+		  margin-right: 0;
+		}
+
+		.tabs-nav__link:hover {
+		  color: #6d6d6d;
+		}
+
+		.tabs-nav__link.is-active {
+		  color: #dc446e;
+		  background-color: #e7e7e7;
+		}
+
+		.tabs-nav__link i,
+		.tabs-nav__link span {
+		  margin: 0;
+		  padding: 0;
+		  line-height: 1;
+		}
+
+		.tabs-nav__link i {
+		  font-size: 18px;
+		}
+
+		.tabs-nav__link span {
+		  display: none;
+		  font-size: 18px;
+		}
+
+		@media all and (min-width: 720px) {
+		  .tabs-nav__link i {
+		    margin-bottom: 12px;
+		    font-size: 22px;
+		  }
+		  .tabs-nav__link span {
+		    display: block;
+		  }
 		}
 
 	</style>
@@ -93,8 +149,71 @@
 	</nav>
 
 	<div id = "container" class = "container">
-		<div id="map" class = "map"> </div>
-		<div id = "info" class = "info"></div>
+		
+		<div id="map" class = "map"> 
+		</div>
+		
+		<div id = "tabs" class = "tabs">
+			<div class = "tabs-nav">
+				<a href="#" class="tabs-nav__link is-active">
+		            <i class="fa fa-home"></i>
+		            <span> Places to visit </span>
+		          </a>
+		          <a href="#" class="tabs-nav__link">
+		            <i class="fa fa-book"></i>
+		            <span> Hotels </span>
+		          </a>
+		          <a href="#" class="tabs-nav__link">
+		            <i class="fa fa-heart"></i>
+		            <span> Restaurants </span>
+		          </a>
+		          <a href="#" class="tabs-nav__link">
+		            <i class="fa fa-calendar"></i>
+		            <span> Weather </span>
+		          </a>
+		          <a href="#" class="tabs-nav__link">
+		            <i class="fa fa-cog"></i>
+		            <span> In-news </span>
+		          </a>
+			</div>
+
+			<div class="tab is-active">
+	          <div class="tab__content">
+	            <h2>Places to Visit </h2>
+	            <p> These are some great places to visit here !</p>  
+	          </div>
+	        </div>
+
+	        <div class="tab is-active">
+	          <div class="tab__content">
+	            <h2> Hotels </h2>
+	            <p> These are some great hotels to stay here !</p>  
+	          </div>
+	        </div>
+
+	        <div class="tab is-active">
+	          <div class="tab__content">
+	            <h2> Restaurants </h2>
+	            <p> These are some great restaurants here !</p>  
+	          </div>
+	        </div>
+
+	        <div class="tab is-active">
+	          <div class="tab__content">
+	            <h2> Weather </h2>
+	            <p> This is the weather forecast </p>  
+	          </div>
+	        </div>
+
+	        <div class="tab is-active">
+	          <div class="tab__content">
+	            <h2> In-News </h2>
+	            <p> These are some important news here !</p>  
+	          </div>
+	        </div>
+
+		</div>
+
 	</div>
 
 	<script type="text/javascript">
