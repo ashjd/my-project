@@ -85,7 +85,7 @@
 		  padding: 0;
 		}
 
-		.tabs-nav__link {
+		.tabs-nav-link {
 		  flex: 1;
 		  margin-right: 4px;
 		  padding: 12px;
@@ -95,44 +95,47 @@
 		  transition: color 0.3s;
 		}
 
-		.tabs-nav__link:last-child {
+		.tabs-nav-link:last-child {
 		  margin-right: 0;
 		}
 
-		.tabs-nav__link:hover {
-		  color: #ffccff;
+		.tabs-nav-link:hover {
+		  color: #ffe6cc;
 		}
 
-		.tabs-nav__link.is-active {
-		  color: #dc446e;
+		.tabs-nav-link.is-active {
+		  color: #0099cc;
 		  background-color: #e7e7e7;
+		  font-weight: bold;
 		}
 
-		.tabs-nav__link i,
-		.tabs-nav__link span {
+		.tabs-nav-link i,
+		.tabs-nav-link span {
 		  margin: 0;
 		  padding: 0;
 		  line-height: 1;
 		}
 
-		.tabs-nav__link i {
+		.tabs-nav-link i {
 		  font-size: 18px;
 		}
 
-		.tabs-nav__link span {
+		.tabs-nav-link span {
 		  display: none;
 		  font-size: 18px;
 		}
 
+
 		@media all and (min-width: 720px) {
-		  .tabs-nav__link i {
+		  .tabs-nav-link i {
 		    margin-bottom: 12px;
 		    font-size: 22px;
 		  }
-		  .tabs-nav__link span {
+		  .tabs-nav-link span {
 		    display: block;
 		  }
 		}
+		
 
 		.tab {
 		  display: none;
@@ -169,24 +172,24 @@
 		
 		<div id = "tabs" class = "tabs">
 			<div class = "tabs-nav">
-				<a href="#" class="tabs-nav__link is-active">
-		            <i class="nearby-places"></i>
+				<a href="#" class="tabs-nav-link is-active">
+		            <i class="tab-head"></i>
 		            <span> Places to visit </span>
 		          </a>
-		          <a href="#" class="tabs-nav__link">
-		            <i class="hotels"></i>
+		          <a href="#" class="tabs-nav-link">
+		            <i class="tab-head"></i>
 		            <span> Hotels </span>
 		          </a>
-		          <a href="#" class="tabs-nav__link">
-		            <i class="restaurants"></i>
+		          <a href="#" class="tabs-nav-link">
+		            <i class="tab-head"></i>
 		            <span> Restaurants </span>
 		          </a>
-		          <a href="#" class="tabs-nav__link">
-		            <i class="weather"></i>
+		          <a href="#" class="tabs-nav-link">
+		            <i class="tab-head"></i>
 		            <span> Weather </span>
 		          </a>
-		          <a href="#" class="tabs-nav__link">
-		            <i class="in-news"></i>
+		          <a href="#" class="tabs-nav-link">
+		            <i class="tab-head"></i>
 		            <span> In-news </span>
 		          </a>
 			</div>
@@ -294,7 +297,7 @@
 		    map.fitBounds(bounds);
 		  });
 		  // [END region_getplaces]
-		  //initTabs();
+		  
 		}
 
 	</script>
@@ -302,8 +305,6 @@
 	<script type="text/javascript">
 
 		(function() {
-
-		 // 'use strict';
 
 		   // The Tabs component.
 		   
@@ -365,7 +366,7 @@
 
 		var myTabs = tabs({
 		    el: '#tabs',
-		    tabNavigationLinks: '.tabs-nav__link',
+		    tabNavigationLinks: '.tabs-nav-link',
 		    tabContentContainers: '.tab'
 		  });
 
