@@ -197,35 +197,35 @@
 			<div class="tab is-active">
 	          <div class="tab__content">
 	            <h2>Places to Visit </h2>
-	            <p> These are some great places to visit here !</p>  
+	            <p id ="places-visit"> Please select a City Name to view the places to visit in that city !</p> 
 	          </div>
 	        </div>
 
 	        <div class="tab">
 	          <div class="tab__content">
 	            <h2> Hotels </h2>
-	            <p> These are some great hotels to stay here !</p>  
+	            <p id="hotels"> Please select a City Name to view the hotels to stay in that city !</p>  
 	          </div>
 	        </div>
 
 	        <div class="tab">
 	          <div class="tab__content">
 	            <h2> Restaurants </h2>
-	            <p> These are some great restaurants here !</p>  
+	            <p id = "restaurants"> Please select a City Name to view the best ranked restaurants in that city !</p> 
 	          </div>
 	        </div>
 
 	        <div class="tab">
 	          <div class="tab__content">
 	            <h2> Weather </h2>
-	            <p> This is the weather forecast </p>  
+	            <p id = "weather"> Please select a City Name to view the weather forecast for that city </p>   
 	          </div>
 	        </div>
 
 	        <div class="tab">
 	          <div class="tab__content">
 	            <h2> In-News </h2>
-	            <p> These are some important news here !</p>  
+	            <p id = "news"> Please select a City Name to view the latest news about that city!</p>  
 	          </div>
 	        </div>
 
@@ -237,7 +237,7 @@
 
 	function initAutocomplete() {
 		  var map = new google.maps.Map(document.getElementById('map'), {
-		    center: {lat: -33.8688, lng: 151.2195},
+		    center: {lat: 37.7833, lng: -122.431297},
 		    zoom: 13,
 		    mapTypeId: google.maps.MapTypeId.ROADMAP
 		  });
@@ -348,8 +348,23 @@
 		        tabContentContainers[activeIndex].classList.remove('is-active');
 		        tabContentContainers[index].classList.add('is-active');
 		        activeIndex = index;
+		        activateContent(index);
 		      }
 		    };
+
+		    var activateContent = function (index){
+		    	switch (index){
+		    		case 0 : document.getElementById("places-visit").innerHTML = "You are inside 'Places to visit' !"; break;
+		    		case 1 : hotelContent(); /*document.getElementById("hotels").innerHTML = "You are inside 'Hotels tab' !"*/; break;
+		    		case 2 : document.getElementById("restaurants").innerHTML = "You are inside 'Restaurants tab' !"; break;
+		    		case 3 : document.getElementById("weather").innerHTML = "You are inside 'Weather tab' !"; break;
+		    		case 4 : document.getElementById("news").innerHTML = "You are inside 'News tab' !"; break;
+		    	}
+		    }
+
+		    var hotelContent = function (){
+		    	document.getElementById("hotels").innerHTML = "Hotel content loading' !";
+		    }
 		    
 		     // Returns init and goToTab 
 		    return {
