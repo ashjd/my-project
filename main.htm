@@ -61,7 +61,7 @@
 			float: left;
 		}
 
-		#tabs {
+		.tabs {
 			margin-top: 10px;
 			margin-right: 10px;
 			margin-left: 50%;
@@ -303,10 +303,9 @@
 
 		(function() {
 
-		  'use strict';
+		 // 'use strict';
 
-		   //@description The Tabs component.
-		   // @param {Object} options The options hash
+		   // The Tabs component.
 		   
 		  var tabs = function(options) {
 
@@ -317,9 +316,7 @@
 		    var initCalled = false;
 
 		    
-		      //@description Initializes the component by removing the no-js class from
-		        //the component, and attaching event listeners to each of the nav items.
-		       //Returns nothing.
+		      //Initializes the component by attaching event listeners to each of the nav items.
 		   
 		    var init = function() {
 		      if (!initCalled) {
@@ -332,10 +329,7 @@
 		      }
 		    };
 
-		     //@description Handles click event listeners on each of the links in the
-		     //  tab navigation. Returns nothing.
-		     //@param {HTMLElement} link The link to listen for events on
-		     //@param {Number} index The index of that link
+		     //Handles click event listeners on each of the links in the tab navigation.
 		     
 		    var handleClick = function(link, index) {
 		      link.addEventListener('click', function(e) {
@@ -344,8 +338,7 @@
 		      });
 		    };
 
-		     //description Goes to a specific tab based on index. Returns nothing.
-		     // param {Number} index The index of the tab to go to
+		     //Goes to a specific tab based on index.
 
 		    var goToTab = function(index) {
 		      if (index !== activeIndex && index >= 0 && index <= tabNavigationLinks.length) {
@@ -369,6 +362,14 @@
 		  window.tabs = tabs;
 
 		})();
+
+		var myTabs = tabs({
+		    el: '#tabs',
+		    tabNavigationLinks: '.tabs-nav__link',
+		    tabContentContainers: '.tab'
+		  });
+
+		 myTabs.init();
 
 </script>
 	
